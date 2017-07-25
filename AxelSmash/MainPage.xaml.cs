@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -36,14 +37,39 @@ namespace AxelSmash
             CoreWindow.GetForCurrentThread().KeyUp += MainPage_KeyDown;
         }
 
-        private void MainPage_KeyDown(CoreWindow sender, KeyEventArgs args)
+        private static readonly string[] sounds = {
+            "giggle.wav",
+            "babylaugh.wav",
+            "babygigl2.wav",
+            "ccgiggle.wav",
+            "laughingmice.wav",
+            "scooby2.wav",
+        };
+
+        private static readonly Random _random = new Random();
+
+        public static string GetRandomSoundFile()
         {
-            var x = new Random().Next(0, (int)ActualWidth);
-            var y = new Random().Next(0, (int)ActualHeight);
+            return sounds[_random.Next(0, sounds.Length)];
+        }
+
+        private async void MainPage_KeyDown(CoreWindow sender, KeyEventArgs args)
+        {
+            var x = _random.Next(0, (int)ActualWidth);
+            var y = _random.Next(0, (int)ActualHeight);
             var cool = new CoolStar();
             FiguresCanvas.Children.Add(cool);
             Canvas.SetLeft(cool, x);
             Canvas.SetTop(cool, y);
+
+            try
+            {
+                await Audio.PlayWavResource(GetRandomSoundFile());
+            }
+            catch(Exception ex)
+            {
+                Debugger.Break();
+            }
         }
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)

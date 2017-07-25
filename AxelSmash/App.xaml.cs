@@ -30,7 +30,7 @@ namespace AxelSmash
         /// </summary>
         public App()
         {
-            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;

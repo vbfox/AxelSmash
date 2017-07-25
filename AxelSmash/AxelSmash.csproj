@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Audio.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -118,6 +119,16 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Resources\Sounds\babygigl2.wav" />
+    <Content Include="Resources\Sounds\babylaugh.wav" />
+    <Content Include="Resources\Sounds\ccgiggle.wav" />
+    <Content Include="Resources\Sounds\EditedJackPlaysBabySmash.wav" />
+    <Content Include="Resources\Sounds\falling.wav" />
+    <Content Include="Resources\Sounds\giggle.wav" />
+    <Content Include="Resources\Sounds\laughingmice.wav" />
+    <Content Include="Resources\Sounds\rising.wav" />
+    <Content Include="Resources\Sounds\scooby2.wav" />
+    <Content Include="Resources\Sounds\smallbumblebee.wav" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
