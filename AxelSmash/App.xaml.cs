@@ -31,7 +31,7 @@ namespace AxelSmash
         public App()
         {
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
-
+            this.RequiresPointerMode = Windows.UI.Xaml.ApplicationRequiresPointerMode.WhenRequested;
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }

@@ -1,27 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.Devices.Enumeration;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Graphics.Display;
-using Windows.Graphics.Display.Core;
+using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using AxelSmash.Shapes;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+#pragma warning disable 4014
 
 namespace AxelSmash
 {
@@ -30,12 +19,36 @@ namespace AxelSmash
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private ControllerPolling controllerPolling;
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
-            CoreWindow.GetForCurrentThread().KeyUp += MainPage_KeyDown;
+            CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
+            controllerPolling = new ControllerPolling();
+            controllerPolling.Smash +=
+                smash => Dispatcher.TryRunAsync(CoreDispatcherPriority.Normal, () => OnSmash(smash));
         }
+
+        private async Task OnSmash(IBabySmash smash)
+        {
+            var x = _random.Next(0, (int)ActualWidth);
+            var y = _random.Next(0, (int)ActualHeight);
+            var cool = new CoolStar();
+            FiguresCanvas.Children.Add(cool);
+            Canvas.SetLeft(cool, x);
+            Canvas.SetTop(cool, y);
+
+            try
+            {
+                await Audio.PlayWavResource(GetRandomSoundFile());
+            }
+            catch (Exception ex)
+            {
+                Debugger.Break();
+            }
+        }
+
 
         private static readonly string[] sounds = {
             "giggle.wav",
@@ -53,23 +66,16 @@ namespace AxelSmash
             return sounds[_random.Next(0, sounds.Length)];
         }
 
-        private async void MainPage_KeyDown(CoreWindow sender, KeyEventArgs args)
+        private void MainPage_KeyDown(CoreWindow sender, KeyEventArgs args)
         {
-            var x = _random.Next(0, (int)ActualWidth);
-            var y = _random.Next(0, (int)ActualHeight);
-            var cool = new CoolStar();
-            FiguresCanvas.Children.Add(cool);
-            Canvas.SetLeft(cool, x);
-            Canvas.SetTop(cool, y);
-
-            try
+            if (args.VirtualKey >= VirtualKey.GamepadA && args.VirtualKey <= VirtualKey.GamepadRightThumbstickLeft)
             {
-                await Audio.PlayWavResource(GetRandomSoundFile());
+                // Handled separately
+                return;
             }
-            catch(Exception ex)
-            {
-                Debugger.Break();
-            }
+        
+            Debug.WriteLine($"KBD {args.VirtualKey}");
+            OnSmash(new KeyboarSmash(args.VirtualKey));
         }
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -129,7 +135,7 @@ namespace AxelSmash
                         newAppView.Title = "New window " + device.Name +" " + i++;
 
                         var frame = new Frame();
-                        frame.Navigate(typeof(SmashPage), null);
+                        frame.Navigate(typeof(MainPage), null);
                         Window.Current.Content = frame;
                         //await xw.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => xw.Activate());
 
