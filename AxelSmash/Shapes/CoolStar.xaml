@@ -5,7 +5,8 @@
     xmlns:local="using:AxelSmash.Shapes"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <UserControl.Resources>
         <Storyboard x:Key="Eyes" x:Name="EyesStoryboard">
@@ -23,8 +24,8 @@
         <Path x:Name="Body" StrokeThickness="10" Stroke="#ff000000" StrokeMiterLimit="1" Data="F1 M 126.578613,11.297852 L 162.373535,83.825684 L 242.412598,95.456055 L 184.495605,151.911133 L 198.167480,231.626953 L 126.578613,193.990234 L 54.988770,231.626953 L 68.661621,151.911133 L 10.744629,95.456055 L 90.783691,83.825684 L 126.578613,11.297852 Z">
             <Path.Fill>
                 <LinearGradientBrush>
-                    <GradientStop Offset="0" Color="#ff00ff00"/>
-                    <GradientStop Offset="1" Color="#ff006736"/>
+                    <GradientStop Offset="0" Color="{Binding GradientStart}"/>
+                    <GradientStop Offset="1" Color="{Binding GradientEnd}"/>
                 </LinearGradientBrush>
             </Path.Fill>
         </Path>

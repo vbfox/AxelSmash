@@ -1,33 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Windows.UI;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
+using JetBrains.Annotations;
 
 namespace AxelSmash.Shapes
 {
-    public sealed partial class CoolStar : UserControl
+    public sealed partial class CoolStar : INotifyPropertyChanged
     {
+        private Color gradientEnd;
+        private Color gradientStart;
+
         public CoolStar()
         {
-            this.InitializeComponent();
-            this.Loaded += CoolStar_Loaded;
+            InitializeComponent();
+
+            GradientStart = Color.FromArgb(255, 0, 255, 0);
+            GradientEnd = Color.FromArgb(255, 0, 103, 54);
+
+            Loaded += CoolStar_Loaded;
         }
+
+        public Color GradientEnd
+        {
+            get => gradientEnd;
+            set
+            {
+                if (value.Equals(gradientEnd)) return;
+                gradientEnd = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Color GradientStart
+        {
+            get => gradientStart;
+            set
+            {
+                if (value.Equals(gradientStart)) return;
+                gradientStart = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private void CoolStar_Loaded(object sender, RoutedEventArgs e)
         {
             EyesStoryboard.Begin();
+        }
+
+        [NotifyPropertyChangedInvocator]
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
