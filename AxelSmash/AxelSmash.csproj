@@ -110,6 +110,7 @@
     <Compile Include="Shapes\CoolStar.xaml.cs">
       <DependentUpon>CoolStar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AudioSmashListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

@@ -34,6 +34,8 @@ namespace AxelSmash.Providers
 
             RawGameController.RawGameControllerAdded -= OnAdded;
             RawGameController.RawGameControllerRemoved -= OnRemoved;
+
+            smashes.OnCompleted();
         }
 
         public IDisposable Subscribe(IObserver<IBabySmash> observer)

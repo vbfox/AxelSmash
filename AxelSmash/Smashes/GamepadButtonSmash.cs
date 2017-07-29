@@ -10,5 +10,6 @@ namespace AxelSmash.Smashes
         }
 
         public GamepadButtons Button { get; }
+        public char? Letter => null;
     }
 }
