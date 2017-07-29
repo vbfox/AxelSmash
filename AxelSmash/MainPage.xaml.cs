@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
-using System.Reactive.Linq;
+using System.Reactive.Disposables;
 using Windows.ApplicationModel.Core;
 using Windows.Devices.Enumeration;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using AxelSmash.Providers;
-using AxelSmash.Shapes;
-using AxelSmash.Smashes;
+using AxelSmash.Listeners;
+using AxelSmash.SmashSources;
 
 #pragma warning disable 4014
 
@@ -21,8 +19,9 @@ namespace AxelSmash
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private ISmashProvider smashprovider;
-        private IDisposable smashSubscription;
+        private ISmashSource source;
+        private readonly CompositeDisposable subscriptions = new CompositeDisposable();
+
         public MainPage()
         {
             InitializeComponent();
@@ -33,57 +32,21 @@ namespace AxelSmash
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            smashprovider = new CompositeSmashProvider(
-                new ControllerSmashProvider(),
-                new CoreWindowKeySmashProvider(CoreWindow.GetForCurrentThread()));
+            source = new CompositeSmashSource(
+                new ControllerSmashSource(),
+                new CoreWindowKeysSmashSource(CoreWindow.GetForCurrentThread()));
 
-            smashSubscription = smashprovider.ObserveOn(Dispatcher).Subscribe(OnSmash);
+            subscriptions.Add(source.Subscribe(new AudioSmashListener()));
+            subscriptions.Add(source.Subscribe(new DrawingsSmashListener(FiguresCanvas)));
         }
 
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            smashSubscription?.Dispose();
-            smashSubscription = null;
+            subscriptions?.Dispose();
 
-            smashprovider?.Dispose();
-            smashprovider = null;
-        }
-
-        private async void OnSmash(IBabySmash smash)
-        {
-            var x = _random.Next(0, (int)ActualWidth);
-            var y = _random.Next(0, (int)ActualHeight);
-            var cool = new CoolStar();
-            FiguresCanvas.Children.Add(cool);
-            Canvas.SetLeft(cool, x);
-            Canvas.SetTop(cool, y);
-
-            try
-            {
-                await Audio.PlayWavResource(GetRandomSoundFile());
-            }
-            catch (Exception ex)
-            {
-                Debugger.Break();
-            }
-        }
-
-
-        private static readonly string[] sounds = {
-            "giggle.wav",
-            "babylaugh.wav",
-            "babygigl2.wav",
-            "ccgiggle.wav",
-            "laughingmice.wav",
-            "scooby2.wav",
-        };
-
-        private static readonly Random _random = new Random();
-
-        public static string GetRandomSoundFile()
-        {
-            return sounds[_random.Next(0, sounds.Length)];
+            source?.Dispose();
+            source = null;
         }
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)

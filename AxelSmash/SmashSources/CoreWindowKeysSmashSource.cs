@@ -4,14 +4,14 @@ using Windows.System;
 using Windows.UI.Core;
 using AxelSmash.Smashes;
 
-namespace AxelSmash.Providers
+namespace AxelSmash.SmashSources
 {
-    public sealed class CoreWindowKeySmashProvider : ISmashProvider
+    public sealed class CoreWindowKeysSmashSource : ISmashSource
     {
         private readonly Subject<IBabySmash> smashes = new Subject<IBabySmash>();
         private readonly CoreWindow window;
 
-        public CoreWindowKeySmashProvider(CoreWindow window)
+        public CoreWindowKeysSmashSource(CoreWindow window)
         {
             this.window = window;
 

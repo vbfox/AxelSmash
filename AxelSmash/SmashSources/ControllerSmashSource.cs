@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Windows.Gaming.Input;
 using AxelSmash.Smashes;
 
-namespace AxelSmash.Providers
+namespace AxelSmash.SmashSources
 {
-    public class ControllerSmashProvider : ISmashProvider
+    public class ControllerSmashSource : ISmashSource
     {
         private static readonly TimeSpan Interval = TimeSpan.FromMilliseconds(50);
 
@@ -20,7 +20,7 @@ namespace AxelSmash.Providers
         private readonly Subject<IBabySmash> smashes = new Subject<IBabySmash>();
         private ImmutableHashSet<ControllerInfo> controllers = ImmutableHashSet<ControllerInfo>.Empty;
 
-        public ControllerSmashProvider()
+        public ControllerSmashSource()
         {
             Attach();
             Task.Factory.StartNew(PoolingLoop, TaskCreationOptions.LongRunning);

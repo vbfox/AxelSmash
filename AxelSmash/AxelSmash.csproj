@@ -95,13 +95,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AsyncActionExtensions.cs" />
     <Compile Include="Audio.cs" />
-    <Compile Include="Providers\CompositeSmashProvider.cs" />
-    <Compile Include="Providers\ControllerSmashProvider.cs" />
-    <Compile Include="Providers\CoreWindowKeySmashProvider.cs" />
+    <Compile Include="SmashSources\CompositeSmashSource.cs" />
+    <Compile Include="SmashSources\ControllerSmashSource.cs" />
+    <Compile Include="SmashSources\CoreWindowKeysSmashSource.cs" />
     <Compile Include="Smashes\GamepadButtonSmash.cs" />
     <Compile Include="Smashes\IBabySmash.cs" />
-    <Compile Include="Providers\ISmashProvider.cs" />
+    <Compile Include="SmashSources\ISmashSource.cs" />
     <Compile Include="Smashes\KeyboarSmash.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -110,7 +111,8 @@
     <Compile Include="Shapes\CoolStar.xaml.cs">
       <DependentUpon>CoolStar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AudioSmashListener.cs" />
+    <Compile Include="Listeners\AudioSmashListener.cs" />
+    <Compile Include="Listeners\DrawingsSmashListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

@@ -3,15 +3,15 @@ using System.Collections.Immutable;
 using System.Reactive.Linq;
 using AxelSmash.Smashes;
 
-namespace AxelSmash.Providers
+namespace AxelSmash.SmashSources
 {
-    class CompositeSmashProvider : ISmashProvider
+    class CompositeSmashSource : ISmashSource
     {
-        private ImmutableArray<ISmashProvider> providers;
+        private ImmutableArray<ISmashSource> providers;
 
-        public CompositeSmashProvider(params ISmashProvider[] providers)
+        public CompositeSmashSource(params ISmashSource[] sources)
         {
-            this.providers = providers.ToImmutableArray();
+            this.providers = sources.ToImmutableArray();
         }
 
         public void Dispose()
