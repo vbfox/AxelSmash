@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.Foundation;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 using AxelSmash.Shapes;
@@ -24,10 +25,12 @@ namespace AxelSmash.Listeners
 
         private void ShowSmash()
         {
-            var x = random.Next(0, (int)canvas.ActualWidth);
-            var y = random.Next(0, (int)canvas.ActualHeight);
             var cool = new CoolStar();
             canvas.Children.Add(cool);
+            cool.Measure(new Size(canvas.ActualWidth, canvas.ActualHeight));
+            var x = random.Next(0, (int)(canvas.ActualWidth - cool.DesiredSize.Width));
+            var y = random.Next(0, (int)(canvas.ActualHeight - cool.DesiredSize.Height));
+            
             Canvas.SetLeft(cool, x);
             Canvas.SetTop(cool, y);
         }
