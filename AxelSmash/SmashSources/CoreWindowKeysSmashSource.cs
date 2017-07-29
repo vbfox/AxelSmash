@@ -35,7 +35,7 @@ namespace AxelSmash.SmashSources
             if (args.VirtualKey >= VirtualKey.GamepadA && args.VirtualKey <= VirtualKey.GamepadRightThumbstickLeft)
                 return;
 
-            var smash = new KeyboarSmash(args.VirtualKey);
+            var smash = new KeyboardSmash(args.VirtualKey);
             smashes.OnNext(smash);
         }
     }

@@ -5,6 +5,13 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxelSmash", "AxelSmash\AxelSmash.csproj", "{34F1387D-FA75-4148-816D-F277DB846D68}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{646866EB-4FA3-4909-8014-E8A7F2430FF5}"
+	ProjectSection(SolutionItems) = preProject
+		Authors.md = Authors.md
+		License.md = License.md
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM

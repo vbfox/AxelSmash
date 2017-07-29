@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using Windows.ApplicationModel.Core;
 using Windows.Devices.Enumeration;
 using Windows.UI.Core;
@@ -36,10 +38,10 @@ namespace AxelSmash
                 new ControllerSmashSource(),
                 new CoreWindowKeysSmashSource(CoreWindow.GetForCurrentThread()));
 
-            subscriptions.Add(source.Subscribe(new AudioSmashListener()));
-            subscriptions.Add(source.Subscribe(new DrawingsSmashListener(FiguresCanvas)));
+            var observable = source.ObserveOn(Scheduler.Default);
+            subscriptions.Add(observable.Subscribe(new AudioSmashListener()));
+            subscriptions.Add(observable.Subscribe(new DrawingsSmashListener(FiguresCanvas)));
         }
-
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {

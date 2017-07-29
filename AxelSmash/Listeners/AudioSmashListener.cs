@@ -1,38 +1,64 @@
-﻿using System;
+using System;
+using System.Threading.Tasks;
+using Windows.Media.Audio;
 using AxelSmash.Smashes;
 
 namespace AxelSmash.Listeners
 {
     class AudioSmashListener : IObserver<IBabySmash>, IDisposable
     {
-        private static readonly string[] Sounds = {
-            "giggle.wav",
-            "babylaugh.wav",
-            "babygigl2.wav",
-            "ccgiggle.wav",
-            "laughingmice.wav",
-            "scooby2.wav",
-        };
+        private static readonly AudioGraphSettings GraphSettings
+            = new AudioGraphSettings(Windows.Media.Render.AudioRenderCategory.Media);
 
-        private readonly Random random = new Random();
+        private readonly Task init;
+        private TextToSpeechSmashListener textToSpeech;
+        private RandomSoundSmashListener randomSound;
 
-        public string GetRandomSoundFile()
+        public AudioSmashListener()
         {
-            return Sounds[random.Next(0, Sounds.Length)];
+            init = Init();
         }
 
-        public async void OnNext(IBabySmash value)
+        private AudioGraph graph;
+
+        private async Task Init()
         {
-            await Audio.PlayWavResource(GetRandomSoundFile());
+            graph = (await AudioGraph.CreateAsync(GraphSettings)).Graph;
+            var outputNode = (await graph.CreateDeviceOutputNodeAsync()).DeviceOutputNode;
+            graph.Start();
+
+            textToSpeech = new TextToSpeechSmashListener(graph, outputNode);
+            randomSound = new RandomSoundSmashListener(graph, outputNode);
         }
 
         public void OnCompleted() => Dispose();
 
         public void OnError(Exception error) => Dispose();
 
+        public void OnNext(IBabySmash value)
+        {
+            if (value.Letter.HasValue)
+            {
+                textToSpeech.OnNext(value);
+            }
+            else
+            {
+                randomSound.OnNext(value);
+            }
+        }
+
         public void Dispose()
         {
-            
+            init?.Wait();
+
+            randomSound?.Dispose();
+            randomSound = null;
+
+            textToSpeech?.Dispose();
+            textToSpeech = null;
+
+            graph?.Dispose();
+            graph = null;
         }
     }
 }
