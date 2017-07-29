@@ -1,14 +1,14 @@
 using Windows.System;
 
-namespace AxelSmash
+namespace AxelSmash.Smashes
 {
     public class KeyboarSmash : IBabySmash
     {
-        public VirtualKey Key { get; }
-
         public KeyboarSmash(VirtualKey key)
         {
             Key = key;
         }
+
+        public VirtualKey Key { get; }
     }
 }

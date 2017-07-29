@@ -1,7 +1,6 @@
-namespace AxelSmash
+namespace AxelSmash.Smashes
 {
     public interface IBabySmash
     {
-
     }
 }

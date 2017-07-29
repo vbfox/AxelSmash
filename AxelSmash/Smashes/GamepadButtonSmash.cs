@@ -1,14 +1,14 @@
 using Windows.Gaming.Input;
 
-namespace AxelSmash
+namespace AxelSmash.Smashes
 {
     public class GamepadButtonSmash : IBabySmash
     {
-        public GamepadButtons Button { get; }
-
         public GamepadButtonSmash(GamepadButtons button)
         {
             Button = button;
         }
+
+        public GamepadButtons Button { get; }
     }
 }
