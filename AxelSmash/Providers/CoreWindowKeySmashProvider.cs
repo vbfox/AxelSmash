@@ -20,7 +20,7 @@ namespace AxelSmash.Providers
 
         public void Dispose()
         {
-            window.KeyDown += Window_KeyDown;
+            window.KeyDown -= Window_KeyDown;
         }
 
         public IDisposable Subscribe(IObserver<IBabySmash> observer)
