@@ -12,7 +12,7 @@ using Windows.Media.Audio;
 using Windows.Media.Effects;
 using Windows.Media.MediaProperties;
 
-namespace AxelSmash.AudioGraphSpeech
+namespace AxelSmash.Uwp.AudioGraphSpeech
 {
     public class AudioWhiteNoiseInputNode : IAudioInputNode
     {

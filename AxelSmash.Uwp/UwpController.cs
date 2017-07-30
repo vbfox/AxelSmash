@@ -1,10 +1,10 @@
 using System.Collections.Immutable;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
-using AxelSmash.Listeners;
-using AxelSmash.SmashSources;
+using AxelSmash.Uwp.Listeners;
+using AxelSmash.Uwp.SmashSources;
 
-namespace AxelSmash
+namespace AxelSmash.Uwp
 {
     class UwpController : Controller
     {

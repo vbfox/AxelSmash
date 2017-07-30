@@ -3,10 +3,10 @@ using System.Collections.Immutable;
 using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using AxelSmash.Giggles;
-using AxelSmash.SmashSources;
+using AxelSmash.Uwp.Giggles;
+using AxelSmash.Uwp.SmashSources;
 
-namespace AxelSmash
+namespace AxelSmash.Uwp
 {
     abstract class Controller : IDisposable
     {

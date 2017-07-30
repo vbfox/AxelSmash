@@ -1,6 +1,4 @@
-﻿using AxelSmash.Smashes;
-
-namespace AxelSmash.Giggles
+﻿namespace AxelSmash.Uwp.Giggles
 {
     interface IGiggle
     {

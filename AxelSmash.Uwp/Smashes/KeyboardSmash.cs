@@ -1,6 +1,7 @@
 using Windows.System;
+using AxelSmash.Smashes;
 
-namespace AxelSmash.Smashes
+namespace AxelSmash.Uwp.Smashes
 {
     public class KeyboardSmash : IBabySmash
     {

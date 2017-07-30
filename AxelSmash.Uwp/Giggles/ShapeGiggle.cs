@@ -1,6 +1,6 @@
 using Spectrum;
 
-namespace AxelSmash.Giggles
+namespace AxelSmash.Uwp.Giggles
 {
     class ShapeGiggle : IGiggle
     {

@@ -1,4 +1,4 @@
-﻿namespace AxelSmash.Giggles
+﻿namespace AxelSmash.Uwp.Giggles
 {
     class SpeechGiggle : IGiggle
     {

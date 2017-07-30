@@ -1,6 +1,7 @@
 using Windows.Gaming.Input;
+using AxelSmash.Smashes;
 
-namespace AxelSmash.Smashes
+namespace AxelSmash.Uwp.Smashes
 {
     public class GamepadButtonSmash : IBabySmash
     {

@@ -11,7 +11,7 @@ using JetBrains.Annotations;
 
 #pragma warning disable 4014
 
-namespace AxelSmash
+namespace AxelSmash.Uwp
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

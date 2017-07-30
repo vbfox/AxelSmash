@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Media.SpeechSynthesis;
 
-namespace AxelSmash.AudioGraphSpeech
+namespace AxelSmash.Uwp.AudioGraphSpeech
 {
     public static class AudioGraphExtensions
     {

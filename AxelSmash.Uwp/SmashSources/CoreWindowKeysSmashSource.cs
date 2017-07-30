@@ -3,8 +3,9 @@ using System.Reactive.Subjects;
 using Windows.System;
 using Windows.UI.Core;
 using AxelSmash.Smashes;
+using AxelSmash.Uwp.Smashes;
 
-namespace AxelSmash.SmashSources
+namespace AxelSmash.Uwp.SmashSources
 {
     public sealed class CoreWindowKeysSmashSource : ISmashSource
     {

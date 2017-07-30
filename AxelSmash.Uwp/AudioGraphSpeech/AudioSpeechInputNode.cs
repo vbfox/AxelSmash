@@ -15,7 +15,7 @@ using Windows.Media.Effects;
 using Windows.Media.MediaProperties;
 using Windows.Media.SpeechSynthesis;
 
-namespace AxelSmash.AudioGraphSpeech
+namespace AxelSmash.Uwp.AudioGraphSpeech
 {
     public class AudioSpeechInputNode : IAudioInputNode
     {

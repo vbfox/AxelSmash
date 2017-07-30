@@ -4,11 +4,10 @@ using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using AxelSmash.Giggles;
-using AxelSmash.Shapes;
-using static Spectrum.Color;
+using AxelSmash.Uwp.Giggles;
+using AxelSmash.Uwp.Shapes;
 
-namespace AxelSmash.Listeners
+namespace AxelSmash.Uwp.Listeners
 {
     class ShapesGigglePlayer : IObserver<ShapeGiggle>, IDisposable
     {
@@ -28,7 +27,7 @@ namespace AxelSmash.Listeners
 
         private static Color GetSaturatedColor(double hue, double luminosity)
         {
-            var rgb = new HSL(hue, 1, luminosity).ToRGB();
+            var rgb = new Spectrum.Color.HSL(hue, 1, luminosity).ToRGB();
             return Color.FromArgb(255, rgb.R, rgb.G, rgb.B);
         }
 

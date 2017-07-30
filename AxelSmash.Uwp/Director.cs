@@ -1,10 +1,10 @@
 using System;
 using System.Reactive.Subjects;
-using AxelSmash.Giggles;
 using AxelSmash.Smashes;
+using AxelSmash.Uwp.Giggles;
 using Spectrum;
 
-namespace AxelSmash
+namespace AxelSmash.Uwp
 {
     /// <summary>
     /// Director listen to smashes and produce giggles

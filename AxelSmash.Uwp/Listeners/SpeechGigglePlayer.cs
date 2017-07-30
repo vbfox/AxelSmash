@@ -2,11 +2,10 @@ using System;
 using System.Threading.Tasks;
 using Windows.Media.Audio;
 using Windows.Media.SpeechSynthesis;
-using AxelSmash.AudioGraphSpeech;
-using AxelSmash.Giggles;
-using AxelSmash.Smashes;
+using AxelSmash.Uwp.AudioGraphSpeech;
+using AxelSmash.Uwp.Giggles;
 
-namespace AxelSmash.Listeners
+namespace AxelSmash.Uwp.Listeners
 {
     class SpeechGigglePlayer : IObserver<SpeechGiggle>, IDisposable
     {

@@ -6,8 +6,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Gaming.Input;
 using AxelSmash.Smashes;
+using AxelSmash.Uwp.Smashes;
 
-namespace AxelSmash.SmashSources
+namespace AxelSmash.Uwp.SmashSources
 {
     public class ControllerSmashSource : ISmashSource
     {

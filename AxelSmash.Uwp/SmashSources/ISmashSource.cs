@@ -1,7 +1,7 @@
 using System;
 using AxelSmash.Smashes;
 
-namespace AxelSmash.SmashSources
+namespace AxelSmash.Uwp.SmashSources
 {
     public interface ISmashSource : IDisposable, IObservable<IBabySmash>
     {

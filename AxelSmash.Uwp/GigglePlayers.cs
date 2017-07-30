@@ -1,7 +1,7 @@
 ﻿using System;
-using AxelSmash.Giggles;
+using AxelSmash.Uwp.Giggles;
 
-namespace AxelSmash
+namespace AxelSmash.Uwp
 {
     class GigglePlayers : IDisposable
     {

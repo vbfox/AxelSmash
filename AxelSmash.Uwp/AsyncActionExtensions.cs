@@ -1,6 +1,6 @@
 ﻿using Windows.Foundation;
 
-namespace AxelSmash
+namespace AxelSmash.Uwp
 {
     static class AsyncActionExtensions
     {

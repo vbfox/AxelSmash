@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 using JetBrains.Annotations;
 
-namespace AxelSmash.Shapes
+namespace AxelSmash.Uwp.Shapes
 {
     public sealed partial class CoolStar : INotifyPropertyChanged
     {

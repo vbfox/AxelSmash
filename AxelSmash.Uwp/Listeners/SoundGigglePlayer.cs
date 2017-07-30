@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
 using Windows.Media.Audio;
-using AxelSmash.Giggles;
+using AxelSmash.Uwp.Giggles;
 
-namespace AxelSmash.Listeners
+namespace AxelSmash.Uwp.Listeners
 {
     class SoundGigglePlayer : IObserver<SpeechGiggle>, IObserver<RandomSoundGiggle>, IDisposable
     {
