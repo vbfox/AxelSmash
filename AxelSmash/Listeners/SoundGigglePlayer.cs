@@ -1,20 +1,20 @@
 using System;
 using System.Threading.Tasks;
 using Windows.Media.Audio;
-using AxelSmash.Smashes;
+using AxelSmash.Giggles;
 
 namespace AxelSmash.Listeners
 {
-    class AudioSmashListener : IObserver<IBabySmash>, IDisposable
+    class SoundGigglePlayer : IObserver<SpeechGiggle>, IObserver<RandomSoundGiggle>, IDisposable
     {
         private static readonly AudioGraphSettings GraphSettings
             = new AudioGraphSettings(Windows.Media.Render.AudioRenderCategory.Media);
 
         private readonly Task init;
-        private TextToSpeechSmashListener textToSpeech;
-        private RandomSoundSmashListener randomSound;
+        private SpeechGigglePlayer textToSpeech;
+        private RandomSoundGigglePlayer randomSound;
 
-        public AudioSmashListener()
+        public SoundGigglePlayer()
         {
             init = Init();
         }
@@ -27,24 +27,21 @@ namespace AxelSmash.Listeners
             var outputNode = (await graph.CreateDeviceOutputNodeAsync()).DeviceOutputNode;
             graph.Start();
 
-            textToSpeech = new TextToSpeechSmashListener(graph, outputNode);
-            randomSound = new RandomSoundSmashListener(graph, outputNode);
+            textToSpeech = new SpeechGigglePlayer(graph, outputNode);
+            randomSound = new RandomSoundGigglePlayer(graph, outputNode);
         }
 
         public void OnCompleted() => Dispose();
 
         public void OnError(Exception error) => Dispose();
-
-        public void OnNext(IBabySmash value)
+        public void OnNext(RandomSoundGiggle value)
         {
-            if (value.Letter.HasValue)
-            {
-                textToSpeech.OnNext(value);
-            }
-            else
-            {
-                randomSound.OnNext(value);
-            }
+            randomSound.OnNext(value);
+        }
+
+        public void OnNext(SpeechGiggle value)
+        {
+            textToSpeech.OnNext(value);
         }
 
         public void Dispose()

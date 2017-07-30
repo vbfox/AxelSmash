@@ -4,11 +4,12 @@ A clone of Scott Hanselman's [BabySmash](https://github.com/shanselman/babysmash
 
 ## Design
 
-Inputs provided by a baby are *smashes* (`IBabySmash`)
+Inputs provided by a baby are *smashes* (`IBabySmash`) and are provided by *smash sources* (`ISmashSource`) :
 
 * Keyboard
-* Controller
-* Voice
+* XBox Gamepad
+* Controller (Not implemented)
+* Voice (Not implemented)
 
 The controller observe theses and produce one or more *giggle* (`IGiggle`)
 

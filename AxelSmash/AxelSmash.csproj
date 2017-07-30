@@ -99,18 +99,20 @@
     </Compile>
     <Compile Include="AsyncActionExtensions.cs" />
     <Compile Include="Audio.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="Director.cs" />
+    <Compile Include="GigglePlayers.cs" />
     <Compile Include="Giggles\IGiggle.cs" />
     <Compile Include="Giggles\RandomSoundGiggle.cs" />
     <Compile Include="Giggles\Shape.cs" />
     <Compile Include="Giggles\ShapeGiggle.cs" />
     <Compile Include="Giggles\SpeechGiggle.cs" />
-    <Compile Include="Listeners\AudioSmashListener.cs" />
-    <Compile Include="Listeners\IMemoryBufferByteAccess.cs" />
+    <Compile Include="Listeners\SoundGigglePlayer.cs" />
     <Compile Include="AudioGraphSpeech\AudioGraphExtensions.cs" />
     <Compile Include="AudioGraphSpeech\AudioWhiteNoiseInputNode.cs" />
     <Compile Include="AudioGraphSpeech\AudioSpeechInputNode.cs" />
     <Compile Include="AudioGraphSpeech\IMemoryBufferByteAccess.cs" />
-    <Compile Include="Listeners\TextToSpeechSmashListener.cs" />
+    <Compile Include="Listeners\SpeechGigglePlayer.cs" />
     <Compile Include="SmashSources\CompositeSmashSource.cs" />
     <Compile Include="SmashSources\ControllerSmashSource.cs" />
     <Compile Include="SmashSources\CoreWindowKeysSmashSource.cs" />
@@ -125,8 +127,9 @@
     <Compile Include="Shapes\CoolStar.xaml.cs">
       <DependentUpon>CoolStar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Listeners\RandomSoundSmashListener.cs" />
-    <Compile Include="Listeners\DrawingsSmashListener.cs" />
+    <Compile Include="Listeners\RandomSoundGigglePlayer.cs" />
+    <Compile Include="Listeners\ShapesGigglePlayer.cs" />
+    <Compile Include="UwpController.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

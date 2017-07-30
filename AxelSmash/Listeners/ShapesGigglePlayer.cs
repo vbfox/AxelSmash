@@ -4,24 +4,24 @@ using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using AxelSmash.Giggles;
 using AxelSmash.Shapes;
-using AxelSmash.Smashes;
 using static Spectrum.Color;
 
 namespace AxelSmash.Listeners
 {
-    class DrawingsSmashListener : IObserver<IBabySmash>, IDisposable
+    class ShapesGigglePlayer : IObserver<ShapeGiggle>, IDisposable
     {
         private readonly Canvas canvas;
 
-        public DrawingsSmashListener(Canvas canvas)
+        public ShapesGigglePlayer(Canvas canvas)
         {
             this.canvas = canvas;
         }
 
         private readonly Random random = new Random();
 
-        public void OnNext(IBabySmash value)
+        public void OnNext(ShapeGiggle value)
         {
             canvas.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, ShowSmash).Ignore();
         }

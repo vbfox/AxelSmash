@@ -1,16 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Concurrency;
-using System.Reactive.Disposables;
-using System.Reactive.Linq;
 using Windows.ApplicationModel.Core;
 using Windows.Devices.Enumeration;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using AxelSmash.Listeners;
-using AxelSmash.SmashSources;
+using JetBrains.Annotations;
 
 #pragma warning disable 4014
 
@@ -21,12 +18,13 @@ namespace AxelSmash
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private ISmashSource source;
-        private readonly CompositeDisposable subscriptions = new CompositeDisposable();
+        private UwpController controller;
 
         public MainPage()
         {
             InitializeComponent();
+
+            controller = new UwpController(FiguresCanvas);
 
             this.Loaded += OnLoaded;
             Unloaded += OnUnloaded;
@@ -34,21 +32,13 @@ namespace AxelSmash
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            source = new CompositeSmashSource(
-                new ControllerSmashSource(),
-                new CoreWindowKeysSmashSource(CoreWindow.GetForCurrentThread()));
-
-            var observable = source.ObserveOn(Scheduler.Default);
-            subscriptions.Add(observable.Subscribe(new AudioSmashListener()));
-            subscriptions.Add(observable.Subscribe(new DrawingsSmashListener(FiguresCanvas)));
+            controller.Start();
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            subscriptions?.Dispose();
-
-            source?.Dispose();
-            source = null;
+            controller?.Dispose();
+            controller = null;
         }
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)

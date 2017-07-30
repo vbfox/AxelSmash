@@ -1,13 +1,10 @@
 ﻿using System;
-using AxelSmash.Smashes;
-using Windows.Storage.Streams;
-using Windows.Media;
-using Windows.Foundation;
 using Windows.Media.Audio;
+using AxelSmash.Giggles;
 
 namespace AxelSmash.Listeners
 {
-    class RandomSoundSmashListener : IObserver<IBabySmash>, IDisposable
+    class RandomSoundGigglePlayer : IObserver<RandomSoundGiggle>, IDisposable
     {
         private static readonly string[] Sounds = {
             "giggle.wav",
@@ -20,7 +17,7 @@ namespace AxelSmash.Listeners
 
         private readonly Random random = new Random();
 
-        public RandomSoundSmashListener(AudioGraph graph, AudioDeviceOutputNode outputNode)
+        public RandomSoundGigglePlayer(AudioGraph graph, AudioDeviceOutputNode outputNode)
         {
             
         }
@@ -30,7 +27,7 @@ namespace AxelSmash.Listeners
             return Sounds[random.Next(0, Sounds.Length)];
         }
 
-        public async void OnNext(IBabySmash value)
+        public async void OnNext(RandomSoundGiggle value)
         {
             await Audio.PlayWavResource(GetRandomSoundFile());
         }

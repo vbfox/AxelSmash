@@ -3,16 +3,17 @@ using System.Threading.Tasks;
 using Windows.Media.Audio;
 using Windows.Media.SpeechSynthesis;
 using AxelSmash.AudioGraphSpeech;
+using AxelSmash.Giggles;
 using AxelSmash.Smashes;
 
 namespace AxelSmash.Listeners
 {
-    class TextToSpeechSmashListener : IObserver<IBabySmash>, IDisposable
+    class SpeechGigglePlayer : IObserver<SpeechGiggle>, IDisposable
     {
         private readonly AudioGraph graph;
         private readonly AudioDeviceOutputNode outputNode;
 
-        public TextToSpeechSmashListener(AudioGraph graph, AudioDeviceOutputNode outputNode)
+        public SpeechGigglePlayer(AudioGraph graph, AudioDeviceOutputNode outputNode)
         {
             this.graph = graph;
             this.outputNode = outputNode;
@@ -26,10 +27,9 @@ namespace AxelSmash.Listeners
             input.Start();
         }
 
-        public async void OnNext(IBabySmash value)
+        public async void OnNext(SpeechGiggle value)
         {
-            // ReSharper disable once PossibleInvalidOperationException
-            await SayText(value.Letter.Value.ToString());
+            await SayText(value.Text);
         }
 
         public void OnCompleted() => Dispose();

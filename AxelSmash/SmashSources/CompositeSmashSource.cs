@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Reactive.Linq;
 using AxelSmash.Smashes;
@@ -7,22 +8,22 @@ namespace AxelSmash.SmashSources
 {
     class CompositeSmashSource : ISmashSource
     {
-        private ImmutableArray<ISmashSource> providers;
+        private ImmutableArray<ISmashSource> sources;
 
-        public CompositeSmashSource(params ISmashSource[] sources)
+        public CompositeSmashSource(ImmutableArray<ISmashSource> sources)
         {
-            this.providers = sources.ToImmutableArray();
+            this.sources = sources;
         }
 
         public void Dispose()
         {
-            foreach (var provider in providers)
+            foreach (var provider in sources)
                 provider.Dispose();
         }
 
         public IDisposable Subscribe(IObserver<IBabySmash> observer)
         {
-            return providers.Merge().Subscribe(observer);
+            return sources.Merge().Subscribe(observer);
         }
     }
 }
