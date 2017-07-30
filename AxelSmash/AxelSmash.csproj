@@ -99,6 +99,11 @@
     </Compile>
     <Compile Include="AsyncActionExtensions.cs" />
     <Compile Include="Audio.cs" />
+    <Compile Include="Giggles\IGiggle.cs" />
+    <Compile Include="Giggles\RandomSoundGiggle.cs" />
+    <Compile Include="Giggles\Shape.cs" />
+    <Compile Include="Giggles\ShapeGiggle.cs" />
+    <Compile Include="Giggles\SpeechGiggle.cs" />
     <Compile Include="Listeners\AudioSmashListener.cs" />
     <Compile Include="Listeners\IMemoryBufferByteAccess.cs" />
     <Compile Include="AudioGraphSpeech\AudioGraphExtensions.cs" />
