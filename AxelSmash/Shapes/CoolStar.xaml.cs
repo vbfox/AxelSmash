@@ -2,45 +2,20 @@
 using System.Runtime.CompilerServices;
 using Windows.UI;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
 using JetBrains.Annotations;
 
 namespace AxelSmash.Shapes
 {
     public sealed partial class CoolStar : INotifyPropertyChanged
     {
-        private Color gradientEnd;
-        private Color gradientStart;
-
-        public CoolStar()
+        public CoolStar(Brush brush)
         {
             InitializeComponent();
 
-            GradientStart = Color.FromArgb(255, 0, 255, 0);
-            GradientEnd = Color.FromArgb(255, 0, 103, 54);
+            Body.Fill = brush;
 
             Loaded += CoolStar_Loaded;
-        }
-
-        public Color GradientEnd
-        {
-            get => gradientEnd;
-            set
-            {
-                if (value.Equals(gradientEnd)) return;
-                gradientEnd = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public Color GradientStart
-        {
-            get => gradientStart;
-            set
-            {
-                if (value.Equals(gradientStart)) return;
-                gradientStart = value;
-                OnPropertyChanged();
-            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

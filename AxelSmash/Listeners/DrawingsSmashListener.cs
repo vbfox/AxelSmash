@@ -3,6 +3,7 @@ using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using AxelSmash.Shapes;
 using AxelSmash.Smashes;
 using static Spectrum.Color;
@@ -25,15 +26,29 @@ namespace AxelSmash.Listeners
             canvas.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, ShowSmash).Ignore();
         }
 
+        private static Color GetSaturatedColor(double hue, double luminosity)
+        {
+            var rgb = new HSL(hue, 1, luminosity).ToRGB();
+            return Color.FromArgb(255, rgb.R, rgb.G, rgb.B);
+        }
+
+        private static LinearGradientBrush GetSaturatedLinearGradient(double hue)
+        {
+            var brush = new LinearGradientBrush();
+            brush.GradientStops.Add(new GradientStop { Color = GetSaturatedColor(hue, 0.3), Offset = 0 });
+            brush.GradientStops.Add(new GradientStop { Color = GetSaturatedColor(hue, 0.5), Offset = 0.5 });
+            brush.GradientStops.Add(new GradientStop { Color = GetSaturatedColor(hue, 0.7), Offset = 1 });
+            return brush;
+        }
+
         private void ShowSmash()
         {
-            var cool = new CoolStar();
-
             var hue = random.Next(0, 360);
-            var start = new HSL(hue, 1, 0.4).ToRGB();
-            var end = new HSL(hue, 1, 0.7).ToRGB();
-            cool.GradientStart = Color.FromArgb(255, start.R, start.G, start.B);
-            cool.GradientEnd = Color.FromArgb(255, end.R, end.G, end.B);
+            var brush = GetSaturatedLinearGradient(hue);
+            var cool = new CoolStar(brush);
+
+            cool.Width = 150;
+            cool.Height = 150;
 
             canvas.Children.Add(cool);
             cool.Measure(new Size(canvas.ActualWidth, canvas.ActualHeight));
