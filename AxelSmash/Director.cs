@@ -1,5 +1,6 @@
 using System;
 using System.Reactive.Subjects;
+using System.Threading;
 using AxelSmash.Colors;
 using AxelSmash.Giggles;
 using AxelSmash.Smashes;
@@ -19,9 +20,14 @@ namespace AxelSmash
 
         public void OnError(Exception error) => Dispose();
 
+        private static readonly ThreadLocal<Random> Random = new ThreadLocal<Random>(() => new Random());
+
         public void OnNext(IBabySmash value)
         {
-            giggles.OnNext(new ShapeGiggle(Shape.Star, new Rgb(255, 0, 0)));
+            var hue = Random.Value.Next(0, 360);
+            var color = new Hsl(hue, 1, 0.5);
+
+            giggles.OnNext(new ShapeGiggle(Shape.Star, color));
 
             if (value.Letter != null)
             {
