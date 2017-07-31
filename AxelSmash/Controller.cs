@@ -1,4 +1,8 @@
 using System;
+using System.Collections.Immutable;
+using System.Reactive.Concurrency;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using AxelSmash.Giggles;
 using AxelSmash.SmashSources;
 
