@@ -1,16 +1,14 @@
 using System;
-using System.Reactive.Subjects;
 using AxelSmash.Colors;
 using AxelSmash.Giggles;
 using AxelSmash.Smashes;
-using Spectrum;
 
-namespace AxelSmash.Uwp
+namespace AxelSmash
 {
     /// <summary>
     /// Director listen to smashes and produce giggles
     /// </summary>
-    class Director : IObservable<IGiggle>, IObserver<IBabySmash>, IDisposable
+    public class Director : IObservable<IGiggle>, IObserver<IBabySmash>, IDisposable
     {
         private readonly Subject<IGiggle> giggles = new Subject<IGiggle>();
 

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Immutable;
-using System.Reactive.Linq;
 using AxelSmash.Smashes;
 
-namespace AxelSmash.Uwp.SmashSources
+namespace AxelSmash.SmashSources
 {
     class CompositeSmashSource : ISmashSource
     {

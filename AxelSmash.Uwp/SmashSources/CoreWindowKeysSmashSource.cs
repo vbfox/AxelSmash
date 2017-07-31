@@ -3,6 +3,7 @@ using System.Reactive.Subjects;
 using Windows.System;
 using Windows.UI.Core;
 using AxelSmash.Smashes;
+using AxelSmash.SmashSources;
 using AxelSmash.Uwp.Smashes;
 
 namespace AxelSmash.Uwp.SmashSources

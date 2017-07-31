@@ -1,9 +1,9 @@
 ﻿using System;
 using AxelSmash.Giggles;
 
-namespace AxelSmash.Uwp
+namespace AxelSmash
 {
-    class GigglePlayers : IDisposable
+    public class GigglePlayers : IDisposable
     {
         public IObserver<RandomSoundGiggle> RandomSound { get; }
         public IObserver<ShapeGiggle> Shape { get; }

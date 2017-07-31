@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Gaming.Input;
 using AxelSmash.Smashes;
+using AxelSmash.SmashSources;
 using AxelSmash.Uwp.Smashes;
 
 namespace AxelSmash.Uwp.SmashSources

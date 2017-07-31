@@ -99,20 +99,15 @@
     </Compile>
     <Compile Include="AsyncActionExtensions.cs" />
     <Compile Include="Audio.cs" />
-    <Compile Include="Controller.cs" />
-    <Compile Include="Director.cs" />
-    <Compile Include="GigglePlayers.cs" />
     <Compile Include="Listeners\SoundGigglePlayer.cs" />
     <Compile Include="AudioGraphSpeech\AudioGraphExtensions.cs" />
     <Compile Include="AudioGraphSpeech\AudioWhiteNoiseInputNode.cs" />
     <Compile Include="AudioGraphSpeech\AudioSpeechInputNode.cs" />
     <Compile Include="AudioGraphSpeech\IMemoryBufferByteAccess.cs" />
     <Compile Include="Listeners\SpeechGigglePlayer.cs" />
-    <Compile Include="SmashSources\CompositeSmashSource.cs" />
     <Compile Include="SmashSources\ControllerSmashSource.cs" />
     <Compile Include="SmashSources\CoreWindowKeysSmashSource.cs" />
     <Compile Include="Smashes\GamepadButtonSmash.cs" />
-    <Compile Include="SmashSources\ISmashSource.cs" />
     <Compile Include="Smashes\KeyboardSmash.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
