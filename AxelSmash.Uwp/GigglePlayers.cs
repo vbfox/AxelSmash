@@ -1,5 +1,5 @@
 ﻿using System;
-using AxelSmash.Uwp.Giggles;
+using AxelSmash.Giggles;
 
 namespace AxelSmash.Uwp
 {

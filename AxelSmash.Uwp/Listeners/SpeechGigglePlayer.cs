@@ -2,8 +2,8 @@ using System;
 using System.Threading.Tasks;
 using Windows.Media.Audio;
 using Windows.Media.SpeechSynthesis;
+using AxelSmash.Giggles;
 using AxelSmash.Uwp.AudioGraphSpeech;
-using AxelSmash.Uwp.Giggles;
 
 namespace AxelSmash.Uwp.Listeners
 {

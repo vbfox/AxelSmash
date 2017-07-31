@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using AxelSmash.Uwp.Giggles;
+using AxelSmash.Giggles;
 using AxelSmash.Uwp.SmashSources;
 
 namespace AxelSmash.Uwp

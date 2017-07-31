@@ -8,7 +8,7 @@ using System;
 
 namespace AxelSmash.Colors
 {
-    static class ColorConversion
+    public static class ColorConversion
     {
         public static Hsl ToHsl(this Rgb rgb)
         {

@@ -1,7 +1,8 @@
 using System;
 using System.Reactive.Subjects;
+using AxelSmash.Colors;
+using AxelSmash.Giggles;
 using AxelSmash.Smashes;
-using AxelSmash.Uwp.Giggles;
 using Spectrum;
 
 namespace AxelSmash.Uwp
@@ -21,7 +22,7 @@ namespace AxelSmash.Uwp
 
         public void OnNext(IBabySmash value)
         {
-            giggles.OnNext(new ShapeGiggle(Shape.Star, new Color.RGB(255, 0, 0)));
+            giggles.OnNext(new ShapeGiggle(Shape.Star, new Rgb(255, 0, 0)));
 
             if (value.Letter != null)
             {

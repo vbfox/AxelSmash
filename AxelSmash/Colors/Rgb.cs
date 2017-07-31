@@ -1,6 +1,6 @@
 ﻿namespace AxelSmash.Colors
 {
-    struct Rgb
+    public struct Rgb
     {
         public byte R { get; }
         public byte G { get; }

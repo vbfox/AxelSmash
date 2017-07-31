@@ -1,6 +1,6 @@
 ﻿namespace AxelSmash.Colors
 {
-    struct Hsl
+    public struct Hsl
     {
         public double H { get; }
         public double S { get; }

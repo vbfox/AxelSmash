@@ -1,6 +1,6 @@
 ﻿using System;
 using Windows.Media.Audio;
-using AxelSmash.Uwp.Giggles;
+using AxelSmash.Giggles;
 
 namespace AxelSmash.Uwp.Listeners
 {

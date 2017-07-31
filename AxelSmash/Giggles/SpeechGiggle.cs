@@ -1,6 +1,6 @@
-﻿namespace AxelSmash.Uwp.Giggles
+﻿namespace AxelSmash.Giggles
 {
-    class SpeechGiggle : IGiggle
+    public class SpeechGiggle : IGiggle
     {
         public string Text { get; }
 
