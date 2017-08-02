@@ -2,6 +2,7 @@
 using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Core;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using AxelSmash.Colors;
@@ -44,26 +45,32 @@ namespace AxelSmash.Uwp.Listeners
 
         private void ShowSmash(ShapeGiggle giggle)
         {
-            var control = GetControl(giggle);
-            if (control == null)
+            var shapeControl = GetShapeControl(giggle);
+            if (shapeControl == null)
             {
                 return;
             }
 
-            control.Width = 150;
-            control.Height = 150;
+            shapeControl.Name = Guid.NewGuid().ToString();
+            shapeControl.Width = 150;
+            shapeControl.Height = 150;
 
-            canvas.Children.Add(control);
-            control.Measure(new Size(canvas.ActualWidth, canvas.ActualHeight));
-            var x = random.Next(0, (int)(canvas.ActualWidth - control.DesiredSize.Width));
-            var y = random.Next(0, (int)(canvas.ActualHeight - control.DesiredSize.Height));
+            canvas.Children.Add(shapeControl);
+            shapeControl.Measure(new Size(canvas.ActualWidth, canvas.ActualHeight));
+            var x = random.Next(0, (int)(canvas.ActualWidth - shapeControl.DesiredSize.Width));
+            var y = random.Next(0, (int)(canvas.ActualHeight - shapeControl.DesiredSize.Height));
             
-            Canvas.SetLeft(control, x);
-            Canvas.SetTop(control, y);
+            Canvas.SetLeft(shapeControl, x);
+            Canvas.SetTop(shapeControl, y);
+
+            var storyboard = Animation.CreateDoubleAnimation(shapeControl,
+                "Opacity",
+                new Duration(TimeSpan.FromSeconds(5)), 1, 0);
+            storyboard.Begin();
         }
 
         [CanBeNull]
-        private static Control GetControl(ShapeGiggle giggle)
+        private static Control GetShapeControl(ShapeGiggle giggle)
         {
             var brush = GetSaturatedLinearGradient(giggle.Color);
             switch (giggle.Shape)

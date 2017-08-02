@@ -99,6 +99,7 @@
     </Compile>
     <Compile Include="AsyncActionExtensions.cs" />
     <Compile Include="Audio.cs" />
+    <Compile Include="Listeners\Animation.cs" />
     <Compile Include="Listeners\SoundGigglePlayer.cs" />
     <Compile Include="AudioGraphSpeech\AudioGraphExtensions.cs" />
     <Compile Include="AudioGraphSpeech\AudioWhiteNoiseInputNode.cs" />
