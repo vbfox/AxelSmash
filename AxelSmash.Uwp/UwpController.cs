@@ -18,7 +18,8 @@ namespace AxelSmash.Uwp
             SmashSources = new ISmashSource[]
             {
                 new ControllerSmashSource(),
-                new CoreWindowKeysSmashSource(CoreWindow.GetForCurrentThread())
+                new CoreWindowGestureSmashSource(CoreWindow.GetForCurrentThread()),
+                new CoreWindowKeyboardSmashSource(CoreWindow.GetForCurrentThread()
             }.ToImmutableArray();
 
             var soundGigglePlayer = new SoundGigglePlayer();

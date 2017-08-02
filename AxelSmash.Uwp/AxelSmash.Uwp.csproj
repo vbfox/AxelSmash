@@ -106,7 +106,7 @@
     <Compile Include="AudioGraphSpeech\IMemoryBufferByteAccess.cs" />
     <Compile Include="Listeners\SpeechGigglePlayer.cs" />
     <Compile Include="SmashSources\ControllerSmashSource.cs" />
-    <Compile Include="SmashSources\CoreWindowKeysSmashSource.cs" />
+    <Compile Include="SmashSources\CoreWindowGestureSmashSource.cs" />
     <Compile Include="Smashes\GamepadButtonSmash.cs" />
     <Compile Include="Smashes\KeyboardSmash.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="Listeners\RandomSoundGigglePlayer.cs" />
     <Compile Include="Listeners\ShapesGigglePlayer.cs" />
+    <Compile Include="SmashSources\CoreWindowKeyboardSmashSource.cs" />
     <Compile Include="UwpController.cs" />
   </ItemGroup>
   <ItemGroup>

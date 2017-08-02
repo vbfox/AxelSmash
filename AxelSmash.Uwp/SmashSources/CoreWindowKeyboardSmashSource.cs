@@ -8,21 +8,21 @@ using AxelSmash.Uwp.Smashes;
 
 namespace AxelSmash.Uwp.SmashSources
 {
-    public sealed class CoreWindowKeysSmashSource : ISmashSource
+    public sealed class CoreWindowKeyboardSmashSource : ISmashSource
     {
         private readonly Subject<IBabySmash> smashes = new Subject<IBabySmash>();
         private readonly CoreWindow window;
 
-        public CoreWindowKeysSmashSource(CoreWindow window)
+        public CoreWindowKeyboardSmashSource(CoreWindow window)
         {
             this.window = window;
 
-            window.KeyDown += Window_KeyDown;
+            window.KeyDown += WindowOnKeyDown;
         }
 
         public void Dispose()
         {
-            window.KeyDown -= Window_KeyDown;
+            window.KeyDown -= WindowOnKeyDown;
 
             smashes.OnCompleted();
         }
@@ -32,7 +32,7 @@ namespace AxelSmash.Uwp.SmashSources
             return smashes.Subscribe(observer);
         }
 
-        private void Window_KeyDown(CoreWindow sender, KeyEventArgs args)
+        private void WindowOnKeyDown(CoreWindow sender, KeyEventArgs args)
         {
             if (args.VirtualKey >= VirtualKey.GamepadA && args.VirtualKey <= VirtualKey.GamepadRightThumbstickLeft)
                 return;
