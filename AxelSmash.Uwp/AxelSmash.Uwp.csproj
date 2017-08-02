@@ -106,6 +106,9 @@
     <Compile Include="AudioGraphSpeech\AudioSpeechInputNode.cs" />
     <Compile Include="AudioGraphSpeech\IMemoryBufferByteAccess.cs" />
     <Compile Include="Listeners\SpeechGigglePlayer.cs" />
+    <Compile Include="Shapes\CoolLetter.xaml.cs">
+      <DependentUpon>CoolLetter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SmashSources\ControllerSmashSource.cs" />
     <Compile Include="SmashSources\CoreWindowGestureSmashSource.cs" />
     <Compile Include="Smashes\GamepadButtonSmash.cs" />
@@ -156,6 +159,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Shapes\CoolLetter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Shapes\CoolStar.xaml">
       <SubType>Designer</SubType>

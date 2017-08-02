@@ -20,6 +20,15 @@
         <Button Click="ButtonBase_OnClick" Grid.Column="0" Grid.Row="0">FullScreen</Button>
         <Button Click="ButtonBase2_OnClick" Grid.Column="0" Grid.Row="1">XX</Button>
     </Grid>-->
-    <Canvas Name="FiguresCanvas"/>
+    <Canvas Name="FiguresCanvas">
+        <Path x:Name="letterPath" StrokeThickness="3" Stroke="#ff000000" Canvas.Left="100" Canvas.Top="100">
+            <Path.Fill>
+                <LinearGradientBrush>
+                    <GradientStop Offset="0" Color="#FF00FF00"/>
+                    <GradientStop Offset="1" Color="#FF006736"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+        </Canvas>
     </Grid>
 </Page>

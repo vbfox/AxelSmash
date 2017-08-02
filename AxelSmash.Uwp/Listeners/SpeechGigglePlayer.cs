@@ -20,6 +20,7 @@ namespace AxelSmash.Uwp.Listeners
 
         private async Task SayText(string text)
         {
+            // https://blogs.windows.com/buildingapps/2016/05/23/using-speech-in-your-uwp-apps-from-talking-to-conversing/
             var input = await graph.CreateSpeechInputNodeAsync(new SpeechSynthesizer(), text);
             input.AddOutgoingConnection(outputNode);
             input.SpeechCompleted += (sender, args) => input.Dispose();

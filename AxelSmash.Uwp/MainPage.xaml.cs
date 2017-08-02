@@ -7,6 +7,7 @@ using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using AxelSmash.Uwp.Shapes;
 using JetBrains.Annotations;
 
 #pragma warning disable 4014
@@ -33,6 +34,8 @@ namespace AxelSmash.Uwp
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             controller.Start();
+
+            letterPath.Data = CoolLetter.MakeCharacterGeometry('X');
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
