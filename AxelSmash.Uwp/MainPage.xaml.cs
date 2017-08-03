@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.ApplicationModel.Core;
 using Windows.Devices.Enumeration;
+using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using AxelSmash.Uwp.Shapes;
 using JetBrains.Annotations;
 
@@ -25,10 +27,21 @@ namespace AxelSmash.Uwp
         {
             InitializeComponent();
 
+            HideTitleBar();
+
             controller = new UwpController(FiguresCanvas);
 
             this.Loaded += OnLoaded;
             Unloaded += OnUnloaded;
+        }
+
+        private static void HideTitleBar()
+        {
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.ButtonForegroundColor = Windows.UI.Colors.DarkGray;
+            titleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
