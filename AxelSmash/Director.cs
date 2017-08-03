@@ -22,6 +22,11 @@ namespace AxelSmash
 
         private static readonly ThreadLocal<Random> Random = new ThreadLocal<Random>(() => new Random());
 
+        public void Start()
+        {
+            giggles.OnNext(new WelcomeSoundGiggle());
+        }
+
         public void OnNext(IBabySmash value)
         {
             var hue = Random.Value.Next(0, 360);

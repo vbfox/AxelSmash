@@ -22,8 +22,11 @@ namespace AxelSmash
             var players = GigglePlayers;
             disposables.Add(players);
             disposables.Add(director.OfType<RandomSoundGiggle>().Subscribe(players.RandomSound));
+            disposables.Add(director.OfType<WelcomeSoundGiggle>().Subscribe(players.WelcomeSound));
             disposables.Add(director.OfType<ShapeGiggle>().Subscribe(players.Shape));
             disposables.Add(director.OfType<SpeechGiggle>().Subscribe(players.Speech));
+
+            director.Start();
         }
 
         protected abstract ImmutableArray<ISmashSource> SmashSources { get; }

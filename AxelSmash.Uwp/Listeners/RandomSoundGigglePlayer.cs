@@ -4,7 +4,7 @@ using AxelSmash.Giggles;
 
 namespace AxelSmash.Uwp.Listeners
 {
-    class RandomSoundGigglePlayer : IObserver<RandomSoundGiggle>, IDisposable
+    class RandomSoundGigglePlayer : IObserver<RandomSoundGiggle>, IObserver<WelcomeSoundGiggle>, IDisposable
     {
         private static readonly string[] Sounds = {
             "giggle.wav",
@@ -35,6 +35,10 @@ namespace AxelSmash.Uwp.Listeners
         public void OnCompleted() => Dispose();
 
         public void OnError(Exception error) => Dispose();
+        public async void OnNext(WelcomeSoundGiggle value)
+        {
+            await Audio.PlayWavResource("EditedJackPlaysBabySmash.wav");
+        }
 
         public void Dispose()
         {

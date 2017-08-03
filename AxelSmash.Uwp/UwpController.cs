@@ -25,6 +25,7 @@ namespace AxelSmash.Uwp
             var soundGigglePlayer = new SoundGigglePlayer();
             GigglePlayers = new GigglePlayers(
                 soundGigglePlayer,
+                soundGigglePlayer,
                 new ShapesGigglePlayer(canvas),
                 soundGigglePlayer);
 
