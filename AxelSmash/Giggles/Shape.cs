@@ -2,6 +2,7 @@
 {
     public enum Shape
     {
+        Letter,
         Star
     }
 }

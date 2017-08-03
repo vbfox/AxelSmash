@@ -7,7 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+    <Viewbox>
+        <Grid x:Name="LayoutRoot" Height="250" Width="250">
+            <Path x:Name="Body" StrokeThickness="5" Stroke="#ff000000" Data="F1 M 126.578613,11.297852 L 162.373535,83.825684 L 242.412598,95.456055 L 184.495605,151.911133 L 198.167480,231.626953 L 126.578613,193.990234 L 54.988770,231.626953 L 68.661621,151.911133 L 10.744629,95.456055 L 90.783691,83.825684 L 126.578613,11.297852 Z" >
+                <Path.Fill>
+                    <LinearGradientBrush>
+                        <GradientStop Offset="0" Color="#FF00FF00"/>
+                        <GradientStop Offset="1" Color="#FF006736"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+        </Grid>
+    </Viewbox>
 </Page>

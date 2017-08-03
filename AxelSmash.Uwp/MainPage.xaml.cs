@@ -47,8 +47,6 @@ namespace AxelSmash.Uwp
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             controller.Start();
-
-            letterPath.Data = CoolLetter.MakeCharacterGeometry('X');
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

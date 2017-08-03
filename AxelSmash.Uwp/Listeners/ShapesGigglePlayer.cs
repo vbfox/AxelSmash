@@ -52,8 +52,8 @@ namespace AxelSmash.Uwp.Listeners
             }
 
             shapeControl.Name = Guid.NewGuid().ToString();
-            shapeControl.Width = 150;
-            shapeControl.Height = 150;
+            shapeControl.Width = 250;
+            shapeControl.Height = 250;
 
             canvas.Children.Add(shapeControl);
             shapeControl.Measure(new Size(canvas.ActualWidth, canvas.ActualHeight));
@@ -77,6 +77,9 @@ namespace AxelSmash.Uwp.Listeners
             {
                 case Shape.Star:
                     return new CoolStar(brush);
+
+                case Shape.Letter:
+                    return new CoolLetter(brush, giggle.Letter ?? '?');
 
                 default:
                     return null;

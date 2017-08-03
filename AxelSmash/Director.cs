@@ -27,14 +27,14 @@ namespace AxelSmash
             var hue = Random.Value.Next(0, 360);
             var color = new Hsl(hue, 1, 0.5);
 
-            giggles.OnNext(new ShapeGiggle(Shape.Star, color));
-
             if (value.Letter != null)
             {
+                giggles.OnNext(new ShapeGiggle(Shape.Letter, color, char.ToUpper(value.Letter.Value)));
                 giggles.OnNext(new SpeechGiggle(value.Letter.ToString()));
             }
             else
             {
+                giggles.OnNext(new ShapeGiggle(Shape.Star, color, null));
                 giggles.OnNext(new RandomSoundGiggle());
             }
         }

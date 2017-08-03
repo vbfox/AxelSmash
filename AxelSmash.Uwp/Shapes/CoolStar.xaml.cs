@@ -1,12 +1,9 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
-using JetBrains.Annotations;
 
 namespace AxelSmash.Uwp.Shapes
 {
-    public sealed partial class CoolStar : INotifyPropertyChanged
+    public sealed partial class CoolStar
     {
         public CoolStar(Brush brush)
         {
@@ -17,17 +14,9 @@ namespace AxelSmash.Uwp.Shapes
             Loaded += CoolStar_Loaded;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private void CoolStar_Loaded(object sender, RoutedEventArgs e)
         {
             EyesStoryboard.Begin();
-        }
-
-        [NotifyPropertyChangedInvocator]
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
